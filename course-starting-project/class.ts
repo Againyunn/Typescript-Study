@@ -1,14 +1,23 @@
-class Department {
+abstract class Department {
   // private readonly id: string;
   public name: string;
   protected employees: string[] = [];
 
-  constructor(private readonly id: string, n: string) {
+  // 정적 변수
+  static fiscalYear = 2023;
+
+  constructor(readonly id: string, n: string) {
     this.name = n;
   }
 
-  describe(this: Department) {
-    console.log(`Department(${this.id}): `, this.name);
+  abstract describe(this: Department): void;
+  // {
+  // console.log(`Department(${this.id}): `, this.name);
+  // }
+
+  // 정적 메서드
+  static createEmployees(name: string) {
+    return { name: name };
   }
 
   addEmployee(employee: string) {
@@ -29,6 +38,10 @@ class ITDepartment extends Department {
   constructor(id: string, public admins: string[]) {
     super(id, "IT"); // 상속할 변수에 하위 class가 변수에 조작을 가해야 하는 경우(해당 하위 class 공통적으로)
     // super와 this를 함께 사용해야 하는 경우에는 반드시 super가 this보다 코드 상위에 위치해야 한다.
+  }
+
+  describe(this: Department): void {
+    console.log(`Department(${this.id}): `, this.name);
   }
 }
 
@@ -52,6 +65,10 @@ class AccountingDepartment extends Department {
     this.lastReports = reports[0];
   }
 
+  describe(this: Department): void {
+    console.log(`Department(${this.id}): `, this.name);
+  }
+
   addEmployee(employee: string): void {
     this.employees.push(employee);
   }
@@ -65,6 +82,9 @@ class AccountingDepartment extends Department {
     console.log(this.reports);
   }
 }
+
+const employee1 = Department.createEmployees("Lucas");
+console.log(employee1, Department.fiscalYear);
 
 const accounting = new AccountingDepartment("d1", ["Max"]);
 
