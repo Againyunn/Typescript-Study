@@ -1,0 +1,50 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="customRangeBar.css" />
+  </head>
+  <body>
+    <div class="options __test1">
+      <h1>Budget</h1>
+      <input
+        class="slider"
+        type="range"
+        min="0"
+        max="3"
+        step="1"
+        list="steplist"
+        value="1"
+      />
+      <datalist class="step" id="steplist">
+        <option class="each-step">0</option>
+        <option class="each-step">1</option>
+        <option class="each-step">2</option>
+        <option class="each-step">3</option>
+      </datalist>
+      <div class="ticks">
+        <span class="o_txt">없음</span>
+        <span class="o_txt">하</span>
+        <span class="o_txt o_on">중</span>
+        <span class="o_txt">상</span>
+      </div>
+    </div>
+
+    <br />
+
+    <!-- <div class="__range">
+      <input value="4" type="range" max="6" min="1" step="1" list="ticks1" />
+    </div> -->
+
+    <div class="__range __range-step">
+      <div class="middle-line"></div>
+      <input value="3" type="range" max="4" min="1" step="1" list="ticks1" />
+      <datalist id="ticks1">
+        <option>없음</option>
+        <option>하</option>
+        <option>중</option>
+        <option>상</option>
+      </datalist>
+    </div>
+
+    <script type="text/javascript" src="customRangeBar.js"></script>
+  </body>
+</html>
